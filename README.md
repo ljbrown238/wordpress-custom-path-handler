@@ -1,4 +1,4 @@
-# Wordpress Custom Path Handler
+# WordPress Plugin: WordPress Custom Path Handler
 
 This plugin demonstrates the use of a simple class that provides handling of a custom path.
 
