@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 require_once( 'CustomPathHandler.php' );
 
 
-// Generate a PDF if it was requested
+// Endpoint to generate a PDF
 new CustomPathHandler('/generate-pdf', function() {
 
 	// Small white box
@@ -28,7 +28,7 @@ new CustomPathHandler('/generate-pdf', function() {
 });
 
 
-// Generate a PNG if it was requested
+// Endpoint to generate a PNG
 new CustomPathHandler('/generate-png', function() {
 
 	// Small red dot
@@ -40,3 +40,17 @@ new CustomPathHandler('/generate-png', function() {
 
 });
 
+
+// Endpoint to generate JSON data from the WordPress database
+new CustomPathHandler('/generate-json', function() {
+
+	global $wpdb;
+
+	// Just get the option property names and matching values for the home and blogname
+	$options = $wpdb->get_results("SELECT option_name, option_value FROM $wpdb->options WHERE option_name in ('home','blogname')");
+
+	header('Content-Type: application/json');
+	header($_SERVER["SERVER_PROTOCOL"]." 200 OK");
+	return json_encode($options);
+
+});

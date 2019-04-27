@@ -7,7 +7,8 @@ class CustomPathHandler {
 	public $cb;
 
 	public function __construct($slug, $cb) {
-		// Register the callback that will actually handle the output
+
+		// Registered user callback to handle actual output content
 		$this->cb = $cb;
 
 		// QUICKLY check to see if the user requested the custom page, otherwise LEAVE FAST!
@@ -25,6 +26,8 @@ class CustomPathHandler {
 	}
 
 	public function cb_shutdown () {
+
+		// Code hints from: https://stackoverflow.com/questions/772510/wordpress-filter-to-modify-final-html-output/22818089#22818089
 
 		// Iterate over each ob level, accumulating each buffer's output
 		$final = '';
