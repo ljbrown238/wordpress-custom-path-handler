@@ -11,13 +11,12 @@ class CustomPathHandler {
 		// Registered user callback to handle actual output content
 		$this->cb = $cb;
 
-		// QUICKLY check to see if the user requested the custom page, otherwise LEAVE FAST!
-		if (
-			str_replace('/','', $slug) !==
-		    str_replace('/','',parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH))) {
+		// Check if request matches this custom page slug, otherwise leave promptly
+		if (str_replace('/','', $slug) !== str_replace('/','',parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH))) {
 			return;
 		}
 
+		// Ensure no other output is generated except what we explicitly generate
 		ob_start();
 		add_action('shutdown',[$this,'cb_shutdown'],0);
 		add_filter('final_output',[$this,'cb_final_output']);
@@ -40,6 +39,7 @@ class CustomPathHandler {
 	}
 
 	public function cb_final_output ($output) {
+		// We are ready for final output.  Call the user's callback so they can generate custom output themselves.
 		return ($this->cb)();
 	}
 
