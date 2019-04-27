@@ -29,7 +29,7 @@ new CustomPathHandler('/generate-pdf', function() {
 
 
 // Generate a PNG if it was requested
-new CustomPathHandler('generate-png', function() {
+new CustomPathHandler('/generate-png', function() {
 
 	// Small red dot
 	$png_base64 = 'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8z8DwBwAFAgH9XSO6wwAAAABJRU5ErkJggg==';
