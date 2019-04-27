@@ -7,5 +7,5 @@ If there is another endpoint created by another plugin, results will depend on t
 
 Usage is simple: create a new instance of CustomPathHandler passing in the 'slug' (path) to be handled, followed by a callback the user will define to generate the custom output.
 
-Two examples are used in this test code.  One generates a small PDF and the other generates a small PNG.
+Three examples are used in this test code.  Generating a small PDF, PNG, and sample JSON output from the WordPress Options table.
 
